@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Seq2Seq Tehsorflow 1.0 Chatbot</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+  </head>
+  <body>
+
+    <div>
+      <center><img src="img/loading_dots.gif" height="100" id="thinking_animation" class="d-inline-block align-top" alt="thinking_animation"></center>
+    </div>
+    <script>
+      var img = document.getElementById('thinking_animation');
+      img.style.visibility = ('hidden');
+    </script>
+    <div class="container">
+
+      <div class="jumbotron mt-1">
+        <h1 class="jumbotron-heading text-xs-center">Seq2Seq Tehsorflow 1.0 Chatbot</h1>
+
+        <hr class="my-2">
+
+        <div class="row">
+          <div class="col-xs-6 offset-xs-3">
+            <ul class="list-group chat-log js-chat-log">
+            </ul>
+
+            <div class="input-group input-group-lg mt-1">
+              <input type="text" class="form-control js-text" placeholder="Type something to begin..."/>
+              <span class="input-group-btn">
+                <button class="btn btn-primary js-say">Submit</button>
+              </span>
+            </div>
+            
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/js.cookie.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script>
+      var chatterbotUrl = '{% url "chatterbot:chatterbot" %}';
+      var csrftoken = Cookies.get('csrftoken');
+
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+
+      $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+        }
+      });
+
+      var $chatlog = $('.js-chat-log');
+      var $input = $('.js-text');
+      var $sayButton = $('.js-say');
+
+      function createRow(text) {
+        var $row = $('<li class="list-group-item"></li>');
+
+        $row.html(text);
+        $chatlog.append($row);
+      }
+
+      function submitInput() {
+        var img = document.getElementById('thinking_animation');
+        img.style.visibility = ('visible');
+        var inputData = {
+          'text': $input.val()
+        }
+
+        // Display the user's input on the web page
+        createRow(inputData.text);
+
+        var $submit = $.ajax({
+          type: 'POST',
+          url: 'http://127.0.0.1:5000/tf_talk/',
+          data: JSON.stringify(inputData),
+          contentType: 'application/json'
+        });
+
+        $submit.done(function(statement) {
+            createRow(statement.text);
+            var img = document.getElementById('thinking_animation');
+            img.style.visibility = ('hidden');
+
+            // Clear the input field
+            $input.val('');
+
+            // Scroll to the bottom of the chat interface
+            $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+        });
+
+        $submit.fail(function() {
+          // TODO: Handle errors
+        });
+      }
+
+      $sayButton.click(function() {
+        submitInput();
+      });
+
+      $input.keydown(function(event) {
+        // Submit the input when the enter button is pressed
+        if (event.keyCode == 13) {
+          submitInput();
+        }
+      });
+    </script>
+  </body>
+</html>

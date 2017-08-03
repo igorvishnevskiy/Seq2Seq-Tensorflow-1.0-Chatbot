@@ -1,0 +1,6 @@
+flask==0.10
+flask_restful==0.3.5
+Flask-HTTPAuth==1.0.0
+flask-cors==3.0.2
+tensorflow==1.0
+numpy==1.12.1
