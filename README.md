@@ -1,7 +1,7 @@
 # Seq2Seq Tensorflow 1.0 Chatbot
 
 <h3><strong>Project Description</strong></h3>
-Chatbot model trained using Sequence-to-Sequence algorithms running on the Tensorflow 1.0 machine learning platform. 
+Chatbot model trained using Sequence-to-Sequence algorithm running on the Tensorflow 1.0 machine learning platform.
 
 <h3><strong>Complete Documentation</strong></h3>
 Complete documentation could be found on my blog post that I have created specifically for this project.
