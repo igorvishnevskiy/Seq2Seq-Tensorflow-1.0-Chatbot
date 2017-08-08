@@ -4,7 +4,7 @@
 Chatbot model trained using Sequence-to-Sequence algorithm running on the Tensorflow 1.0 machine learning platform.
 
 <h3><strong>Complete Documentation</strong></h3>
-Complete documentation could be found on my blog post that I have created specifically for this project.
+Complete documentation could be found in my blog post that I have created specifically for this project.
 Click here for my blog article: <a href="https://blesque.com/press/building-sequence-to-sequence-chatbot-with-tensorflow-1-0/">Building Sequence-to-Sequence Chatbot With Tensorflow 1.0</a>.
 
 <h3><strong>How to Train</strong></h3>
@@ -16,7 +16,7 @@ Submitted project directory contains 3 files that need to be ran for you to be a
  	<li>Next, execute following command: “sh train_bot.sh”. Please be patient until all variables are loaded and training has started. You will see perplexity output in the console for every 100 steps of training.”</li>
  	<li>I set the training limit to 100000 steps. However steps limit value and the rest of the values for the size of the model, learning_rate, num_layers, and more can be edited in the following file: "project_files_root/tensorflow/flags.py" </li>
  	<li>Training should start right away using the training data that I already have provided in the directory: "project_files_root/tensorflow/combined_data/".</li>
- 	<li>When re-training, make sure to empty following directories: "project_files_root/tensorflow/logs/", "project_files_root/tensorflow/model_out/" and "project_files_root/tensorflow/temp_data/". Otherwise training will start where it left off. This is good to have in case you would like to stop training, then continue training further from the point where you stopped it.</li>
+ 	<li>When re-training, make sure to empty following directories: "project_files_root/tensorflow/logs/", "project_files_root/tensorflow/model_out/" and "project_files_root/tensorflow/temp_data/". Otherwise training will start where it left off. This is good to have in case you would like to temporarily stop training, then continue training further from the point where you stopped it.</li>
 	<li>When training will start, missing directories will be added automatically.</li>
 </ul>
 
