@@ -5,7 +5,7 @@ Chatbot model trained using Sequence-to-Sequence algorithm running on the Tensor
 
 <h3><strong>Complete Documentation</strong></h3>
 Complete documentation could be found in my blog post that I have created specifically for this project.
-Click here for my blog article: <a href="http://www.pressreleasecourier.com/building-sequence-to-sequence-chatbot-with-tensorflow-1-0/">Building Sequence-to-Sequence Chatbot With Tensorflow 1.0</a>.
+Click here for my blog article: <a href="http://www.machinelearningsolution.com/building-sequence-to-sequence-chatbot-with-tensorflow-1-0/">Building Sequence-to-Sequence Chatbot With Tensorflow 1.0</a>.
 
 <h3><strong>How to Train</strong></h3>
 Submitted project directory contains 3 files that need to be ran for you to be able to test the trained model. Following steps will need to be performed in order to make my bot run.
